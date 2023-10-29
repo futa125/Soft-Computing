@@ -8,7 +8,7 @@ from abc import ABC
 from collections.abc import Iterable
 from typing import Iterator, Tuple, List, cast
 
-from lab1.domain.element import DomainElement
+from lab2.domain.element import DomainElement
 
 
 class DomainInterface(abc.ABC, Iterable[DomainElement]):

@@ -1,9 +1,9 @@
-from lab1.domain.domain import Domain
-from lab1.domain.element import DomainElement
-from lab1.fuzzy_set.fuzzy_set import FuzzySetInterface
-from lab1.fuzzy_set.mutable import MutableFuzzySet
-from lab1.fuzzy_set.operations.binary_functions import FloatBinaryFunction
-from lab1.fuzzy_set.operations.unary_functions import FloatUnaryFunction
+from lab2.domain.domain import Domain
+from lab2.domain.element import DomainElement
+from lab2.fuzzy_set.fuzzy_set import FuzzySetInterface
+from lab2.fuzzy_set.mutable import MutableFuzzySet
+from lab2.fuzzy_set.operations.binary_functions import FloatBinaryFunction
+from lab2.fuzzy_set.operations.unary_functions import FloatUnaryFunction
 
 
 def unary_operation(fuzzy_set: FuzzySetInterface, func: FloatUnaryFunction) -> FuzzySetInterface:

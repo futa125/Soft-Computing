@@ -4,15 +4,15 @@ import dataclasses
 
 from typing import List
 
-from lab1.domain.domain import DomainInterface
-from lab1.domain.element import DomainElement
-from lab1.fuzzy_set.fuzzy_set import FuzzySetInterface
+from lab2.domain.domain import DomainInterface
+from lab2.domain.element import DomainElement
+from lab2.fuzzy_set.fuzzy_set import FuzzySetInterface
 
 
 @dataclasses.dataclass
 class MutableFuzzySet(FuzzySetInterface):
     domain: DomainInterface
-    memberships: List[float, ...] = dataclasses.field(init=False)
+    memberships: List[float] = dataclasses.field(init=False)
 
     def __post_init__(self):
         self.memberships = [0 for _ in range(self.domain.get_cardinality())]

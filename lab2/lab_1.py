@@ -1,11 +1,11 @@
-from lab1.domain.domain import DomainInterface, Domain
-from lab1.domain.element import DomainElement
-from lab1.fuzzy_set.calculated import CalculatedFuzzySet
-from lab1.fuzzy_set.fuzzy_set import FuzzySetInterface
-from lab1.fuzzy_set.mutable import MutableFuzzySet
-from lab1.fuzzy_set.operations.binary_functions import zadeh_or, hamacher_t_norm
-from lab1.fuzzy_set.operations.operations import unary_operation, binary_operation
-from lab1.fuzzy_set.operations.unary_functions import lambda_function, zadeh_not
+from lab2.domain.domain import DomainInterface, Domain
+from lab2.domain.element import DomainElement
+from lab2.fuzzy_set.calculated import CalculatedFuzzySet
+from lab2.fuzzy_set.fuzzy_set import FuzzySetInterface
+from lab2.fuzzy_set.mutable import MutableFuzzySet
+from lab2.fuzzy_set.operations.binary_functions import zadeh_or, hamacher_t_norm
+from lab2.fuzzy_set.operations.operations import unary_operation, binary_operation
+from lab2.fuzzy_set.operations.unary_functions import lambda_function, zadeh_not
 
 
 def debug_domain(domain: DomainInterface, heading: str) -> None:

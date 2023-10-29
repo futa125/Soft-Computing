@@ -1,9 +1,9 @@
 import dataclasses
 
-from lab1.domain.domain import DomainInterface
-from lab1.domain.element import DomainElement
-from lab1.fuzzy_set.fuzzy_set import FuzzySetInterface
-from lab1.fuzzy_set.operations.unary_functions import IntUnaryFunction
+from lab2.domain.domain import DomainInterface
+from lab2.domain.element import DomainElement
+from lab2.fuzzy_set.fuzzy_set import FuzzySetInterface
+from lab2.fuzzy_set.operations.unary_functions import IntUnaryFunction
 
 
 @dataclasses.dataclass
