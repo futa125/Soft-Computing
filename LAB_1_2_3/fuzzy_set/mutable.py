@@ -4,9 +4,9 @@ import dataclasses
 
 from typing import List
 
-from lab2.domain.domain import DomainInterface
-from lab2.domain.element import DomainElement
-from lab2.fuzzy_set.fuzzy_set import FuzzySetInterface
+from LAB_1_2_3.domain.domain import DomainInterface
+from LAB_1_2_3.domain.element import DomainElement
+from LAB_1_2_3.fuzzy_set.fuzzy_set import FuzzySetInterface
 
 
 @dataclasses.dataclass

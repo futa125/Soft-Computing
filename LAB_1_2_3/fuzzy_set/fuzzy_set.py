@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import abc
 
-from lab2.domain.domain import DomainInterface
-from lab2.domain.element import DomainElement
+from LAB_1_2_3.domain.domain import DomainInterface
+from LAB_1_2_3.domain.element import DomainElement
 
 
 class FuzzySetInterface(abc.ABC):

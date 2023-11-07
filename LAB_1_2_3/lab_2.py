@@ -1,15 +1,13 @@
-from copy import deepcopy, copy
+from copy import deepcopy
 
-from lab2.domain.domain import DomainInterface, Domain
-from lab2.domain.element import DomainElement
-from lab2.fuzzy_set.calculated import CalculatedFuzzySet
-from lab2.fuzzy_set.fuzzy_set import FuzzySetInterface
-from lab2.fuzzy_set.mutable import MutableFuzzySet
-from lab2.fuzzy_set.operations.binary_functions import zadeh_or, hamacher_t_norm
-from lab2.fuzzy_set.operations.operations import unary_operation, binary_operation
-from lab2.fuzzy_set.operations.unary_functions import lambda_function, zadeh_not
-from lab2.fuzzy_set.relations.relations import is_symmetric, is_reflexive, is_max_min_transitive, is_u_times_u_relation, \
+from LAB_1_2_3.domain.domain import DomainInterface, Domain
+from LAB_1_2_3.domain.element import DomainElement
+from LAB_1_2_3.fuzzy_set.fuzzy_set import FuzzySetInterface
+from LAB_1_2_3.fuzzy_set.mutable import MutableFuzzySet
+from LAB_1_2_3.fuzzy_set.relations.relations import (
+    is_symmetric, is_reflexive, is_max_min_transitive, is_u_times_u_relation,
     composition_of_binary_relations, is_fuzzy_equivalence
+)
 
 
 def debug_domain(domain: DomainInterface, heading: str) -> None:
@@ -111,7 +109,7 @@ def main() -> None:
 
     r1r2: FuzzySetInterface = composition_of_binary_relations(r1, r2)
     print()
-    for element in copy(r1r2.get_domain()):
+    for element in deepcopy(r1r2.get_domain()):
         print(f"mu({element})={r1r2.get_value_at(element):.1f}")
 
     u: DomainInterface = Domain.int_range(1, 5)
@@ -127,11 +125,11 @@ def main() -> None:
                             .set(DomainElement.of(3, 4), 0.2)
                             .set(DomainElement.of(4, 3), 0.2))
 
-    r2: FuzzySetInterface = copy(r)
+    r2: FuzzySetInterface = deepcopy(r)
 
     print()
     print(f"R is a fuzzy equivalence before compositions? {is_fuzzy_equivalence(r2)}")
-    for element in copy(r2.get_domain()):
+    for element in deepcopy(r2.get_domain()):
         print(f"mu({element})={r2.get_value_at(element):.1f}")
     print()
 
@@ -139,7 +137,7 @@ def main() -> None:
         r2 = composition_of_binary_relations(r2, r)
 
         print(f"R is a fuzzy equivalence after {i} compositions? {is_fuzzy_equivalence(r2)}")
-        for element in copy(r2.get_domain()):
+        for element in deepcopy(r2.get_domain()):
             print(f"mu({element})={r2.get_value_at(element):.1f}")
 
         print()

@@ -3,12 +3,13 @@ from __future__ import annotations
 import abc
 import dataclasses
 import itertools
+import sys
 
 from abc import ABC
 from collections.abc import Iterable
 from typing import Iterator, Tuple, List, cast
 
-from lab2.domain.element import DomainElement
+from LAB_1_2_3.domain.element import DomainElement
 
 
 class DomainInterface(abc.ABC, Iterable[DomainElement]):
@@ -86,7 +87,6 @@ class Domain(DomainInterface, ABC):
 class SimpleDomain(Domain):
     start: int
     end: int
-    _curr: int = dataclasses.field(init=False)
 
     def __post_init__(self) -> None:
         if self.end <= self.start:
@@ -102,12 +102,17 @@ class SimpleDomain(Domain):
         return 1
 
     def __iter__(self) -> Iterator[DomainElement]:
-        self._curr = self.start
+        return SimpleDomainIterator(self.start, self.end, self.start)
 
-        return self
+
+@dataclasses.dataclass
+class SimpleDomainIterator(Iterator[DomainElement]):
+    _start: int
+    _end: int
+    _curr: int
 
     def __next__(self) -> DomainElement:
-        if self._curr == self.end:
+        if self._curr == self._end:
             raise StopIteration
 
         element = DomainElement((self._curr, ))
@@ -144,9 +149,12 @@ class CompositeDomain(Domain):
         for domain in self.domains:
             ranges.append(range(domain.start, domain.end))
 
-        self._product = itertools.product(*ranges)
+        return CompositeDomainIterator(itertools.product(*ranges))
 
-        return self
+
+@dataclasses.dataclass
+class CompositeDomainIterator(Iterator[DomainElement]):
+    _product: Iterator[Tuple[int, ...]]
 
     def __next__(self) -> DomainElement:
         return DomainElement(self._product.__next__())

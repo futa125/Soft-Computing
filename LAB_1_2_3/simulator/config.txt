@@ -1,0 +1,4 @@
+python lab_3.py
+3
+20
+10

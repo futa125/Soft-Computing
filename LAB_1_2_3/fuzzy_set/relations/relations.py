@@ -1,18 +1,15 @@
-from copy import copy
-from typing import List
-
-from lab2.domain.domain import Domain
-from lab2.domain.element import DomainElement
-from lab2.fuzzy_set.operations.binary_functions import zadeh_or, zadeh_and
-from lab2.fuzzy_set.fuzzy_set import FuzzySetInterface
-from lab2.fuzzy_set.mutable import MutableFuzzySet
+from LAB_1_2_3.domain.domain import Domain
+from LAB_1_2_3.domain.element import DomainElement
+from LAB_1_2_3.fuzzy_set.fuzzy_set import FuzzySetInterface
+from LAB_1_2_3.fuzzy_set.mutable import MutableFuzzySet
+from LAB_1_2_3.fuzzy_set.operations.binary_functions import zadeh_or, zadeh_and
 
 
 def is_symmetric(fuzzy_set: FuzzySetInterface) -> bool:
     if not is_u_times_u_relation(fuzzy_set):
         return False
 
-    for element in copy(fuzzy_set.get_domain()):
+    for element in fuzzy_set.get_domain():
         symmetric_element = DomainElement.of(*reversed(element.values))
 
         if fuzzy_set.get_value_at(element) != fuzzy_set.get_value_at(symmetric_element):
@@ -25,7 +22,7 @@ def is_reflexive(fuzzy_set: FuzzySetInterface) -> bool:
     if not is_u_times_u_relation(fuzzy_set):
         return False
 
-    for element in copy(fuzzy_set.get_domain()):
+    for element in fuzzy_set.get_domain():
         all_components_equal = all(element.get_component_value(i) == element.get_component_value(0)
                                    for i in range(element.get_number_of_components()))
 
@@ -38,10 +35,10 @@ def is_reflexive(fuzzy_set: FuzzySetInterface) -> bool:
 
 
 def is_max_min_transitive(fuzzy_set: FuzzySetInterface) -> bool:
-    for xy in copy(fuzzy_set.get_domain()):
+    for xy in fuzzy_set.get_domain():
         x, y = xy.get_component_value(0), xy.get_component_value(1)
 
-        for element in copy(fuzzy_set.get_domain().get_component(1)):
+        for element in fuzzy_set.get_domain().get_component(1):
             z = element.get_component_value(0)
 
             xz = DomainElement.of(x, z)
@@ -64,7 +61,7 @@ def is_u_times_u_relation(fuzzy_set: FuzzySetInterface) -> bool:
 
     x: DomainElement
     y: DomainElement
-    for x, y in zip(copy(domain_1), copy(domain_2)):
+    for x, y in zip(domain_1, domain_2):
         if x.get_component_value(0) != y.get_component_value(0):
             return False
 
@@ -81,13 +78,13 @@ def composition_of_binary_relations(set_1: FuzzySetInterface, set_2: FuzzySetInt
 
     result = MutableFuzzySet(uw)
 
-    for element_u in copy(u):
-        for element_w in copy(w):
+    for element_u in u:
+        for element_w in w:
             value: float = 0
 
             x = element_u.get_component_value(0)
             y = element_w.get_component_value(0)
-            for element in copy(a):
+            for element in a:
                 xy = DomainElement.of(x, element.get_component_value(0))
                 yz = DomainElement.of(element.get_component_value(0), y)
 
