@@ -7,7 +7,7 @@ CLOSE_TO_LAND = CalculatedFuzzySet(DISTANCE, l_function(40, 70))
 
 VERY_CLOSE_TO_LAND = CalculatedFuzzySet(DISTANCE, l_function(30, 40))
 
-FAR_FROM_LAND = CalculatedFuzzySet(DISTANCE, l_function(150, 200))
+FAR_FROM_LAND = CalculatedFuzzySet(DISTANCE, l_function(100, 200))
 
 LEFT_TURN_SOFT = CalculatedFuzzySet(ANGLE, gamma_function(
     ANGLE.index_of_element(DomainElement.of(5)),

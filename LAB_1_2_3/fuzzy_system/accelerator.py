@@ -7,9 +7,8 @@ from LAB_1_2_3.rule.rule import Rule
 
 RULES: List[Rule] = [
     Rule([FAR_FROM_LAND, FAR_FROM_LAND, FAR_FROM_LAND, FAR_FROM_LAND, None, None], ACCELERATE),
-    Rule([None, None, CLOSE_TO_LAND, CLOSE_TO_LAND, None, None], DECELERATE),
-    Rule([None, None, None, None, SLOW, None], ACCELERATE),
     Rule([None, None, None, None, FAST, None], DECELERATE),
+    Rule([None, None, VERY_CLOSE_TO_LAND, VERY_CLOSE_TO_LAND, None, None], DECELERATE),
 ]
 
 
