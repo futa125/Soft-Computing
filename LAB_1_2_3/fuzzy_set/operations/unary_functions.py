@@ -1,10 +1,13 @@
 from typing import TypeAlias, Callable
 
+import numba
+
 IntUnaryFunction: TypeAlias = Callable[[int], float]
 FloatUnaryFunction: TypeAlias = Callable[[float], float]
 
 
 def l_function(alpha: int, beta: int) -> IntUnaryFunction:
+    @numba.njit
     def _l_function(value: int) -> float:
         if value < alpha:
             return 1
@@ -18,6 +21,7 @@ def l_function(alpha: int, beta: int) -> IntUnaryFunction:
 
 
 def gamma_function(alpha: int, beta: int) -> IntUnaryFunction:
+    @numba.njit
     def _gamma_function(value: int) -> float:
         if value < alpha:
             return 0
@@ -31,6 +35,7 @@ def gamma_function(alpha: int, beta: int) -> IntUnaryFunction:
 
 
 def lambda_function(alpha: int, beta: int, gamma: int) -> IntUnaryFunction:
+    @numba.njit
     def _lambda_function(value: int) -> float:
         if value < alpha:
             return 0
@@ -46,5 +51,6 @@ def lambda_function(alpha: int, beta: int, gamma: int) -> IntUnaryFunction:
     return _lambda_function
 
 
+@numba.njit
 def zadeh_not() -> FloatUnaryFunction:
     return lambda x: 1 - x

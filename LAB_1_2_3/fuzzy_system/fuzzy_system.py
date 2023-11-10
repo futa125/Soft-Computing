@@ -3,7 +3,6 @@ from __future__ import annotations
 import abc
 import dataclasses
 import enum
-import sys
 from typing import List
 
 from LAB_1_2_3.boat.inputvalues import InputValues

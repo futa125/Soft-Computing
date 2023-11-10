@@ -4,6 +4,8 @@ import dataclasses
 import sys
 from typing import List
 
+import numba
+
 from LAB_1_2_3.boat.inputvalues import InputValues
 from LAB_1_2_3.domain.element import DomainElement
 from LAB_1_2_3.fuzzy_set.fuzzy_set import FuzzySetInterface

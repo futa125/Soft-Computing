@@ -1,5 +1,3 @@
-from copy import deepcopy
-
 from LAB_1_2_3.domain.domain import DomainInterface, Domain
 from LAB_1_2_3.domain.element import DomainElement
 from LAB_1_2_3.fuzzy_set.fuzzy_set import FuzzySetInterface
@@ -109,7 +107,7 @@ def main() -> None:
 
     r1r2: FuzzySetInterface = composition_of_binary_relations(r1, r2)
     print()
-    for element in deepcopy(r1r2.get_domain()):
+    for element in (r1r2.get_domain()):
         print(f"mu({element})={r1r2.get_value_at(element):.1f}")
 
     u: DomainInterface = Domain.int_range(1, 5)
@@ -125,11 +123,11 @@ def main() -> None:
                             .set(DomainElement.of(3, 4), 0.2)
                             .set(DomainElement.of(4, 3), 0.2))
 
-    r2: FuzzySetInterface = deepcopy(r)
+    r2: FuzzySetInterface = (r)
 
     print()
     print(f"R is a fuzzy equivalence before compositions? {is_fuzzy_equivalence(r2)}")
-    for element in deepcopy(r2.get_domain()):
+    for element in (r2.get_domain()):
         print(f"mu({element})={r2.get_value_at(element):.1f}")
     print()
 
@@ -137,7 +135,7 @@ def main() -> None:
         r2 = composition_of_binary_relations(r2, r)
 
         print(f"R is a fuzzy equivalence after {i} compositions? {is_fuzzy_equivalence(r2)}")
-        for element in deepcopy(r2.get_domain()):
+        for element in (r2.get_domain()):
             print(f"mu({element})={r2.get_value_at(element):.1f}")
 
         print()

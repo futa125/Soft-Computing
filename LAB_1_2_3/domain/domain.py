@@ -101,6 +101,12 @@ class SimpleDomain(Domain):
     def get_number_of_components(self) -> int:
         return 1
 
+    def index_of_element(self, element_to_find: DomainElement) -> int:
+        return element_to_find.get_component_value(0) - self.start
+
+    def element_for_index(self, index_to_find: int) -> DomainElement:
+        return DomainElement.of(self.start + index_to_find)
+
     def __iter__(self) -> Iterator[DomainElement]:
         return SimpleDomainIterator(self.start, self.end, self.start)
 

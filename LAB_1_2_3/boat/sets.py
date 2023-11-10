@@ -1,7 +1,10 @@
-from LAB_1_2_3.boat.domains import DISTANCE, ANGLE, ACCELERATION, SPEED
+from LAB_1_2_3.boat.domains import DISTANCE, ANGLE, ACCELERATION, SPEED, ORIENTATION
 from LAB_1_2_3.domain.element import DomainElement
 from LAB_1_2_3.fuzzy_set.calculated import CalculatedFuzzySet
+from LAB_1_2_3.fuzzy_set.mutable import MutableFuzzySet
 from LAB_1_2_3.fuzzy_set.operations.unary_functions import l_function, gamma_function
+
+WRONG_DIRECTION = MutableFuzzySet(ORIENTATION).set(DomainElement.of(0), 1)
 
 CLOSE_TO_LAND = CalculatedFuzzySet(DISTANCE, l_function(40, 70))
 
@@ -40,11 +43,11 @@ DECELERATE = CalculatedFuzzySet(ACCELERATION, l_function(
 ))
 
 FAST = CalculatedFuzzySet(SPEED, gamma_function(
-    SPEED.index_of_element(DomainElement.of(50)),
     SPEED.index_of_element(DomainElement.of(60)),
+    SPEED.index_of_element(DomainElement.of(80)),
 ))
 
-SLOW = CalculatedFuzzySet(SPEED, gamma_function(
-    SPEED.index_of_element(DomainElement.of(30)),
+VERY_SLOW = CalculatedFuzzySet(SPEED, l_function(
+    SPEED.index_of_element(DomainElement.of(20)),
     SPEED.index_of_element(DomainElement.of(40)),
 ))

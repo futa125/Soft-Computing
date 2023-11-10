@@ -1,4 +1,5 @@
 import sys
+import time
 
 from LAB_1_2_3.boat.inputvalues import InputValues
 from LAB_1_2_3.defuzzify.coa import COADefuzzifier

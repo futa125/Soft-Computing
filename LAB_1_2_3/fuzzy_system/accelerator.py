@@ -1,14 +1,27 @@
 from typing import List
 
-from LAB_1_2_3.boat.sets import VERY_CLOSE_TO_LAND, SLOW, ACCELERATE, FAST, DECELERATE, FAR_FROM_LAND, CLOSE_TO_LAND
+from LAB_1_2_3.boat.sets import (ACCELERATE, FAST, DECELERATE, FAR_FROM_LAND,
+                                 CLOSE_TO_LAND, WRONG_DIRECTION, VERY_SLOW)
 from LAB_1_2_3.defuzzify.defuzzify import Defuzzifier
 from LAB_1_2_3.fuzzy_system.fuzzy_system import FuzzySystem, FuzzySystemType
 from LAB_1_2_3.rule.rule import Rule
 
 RULES: List[Rule] = [
-    Rule([FAR_FROM_LAND, FAR_FROM_LAND, FAR_FROM_LAND, FAR_FROM_LAND, None, None], ACCELERATE),
+    Rule([None, None, None, None, VERY_SLOW, None], ACCELERATE),
+
+    # Speed up if enough space
+    Rule([None, None, FAR_FROM_LAND, FAR_FROM_LAND, None, None], ACCELERATE),
+
+    # Slow down a bit if too fast
     Rule([None, None, None, None, FAST, None], DECELERATE),
-    Rule([None, None, VERY_CLOSE_TO_LAND, VERY_CLOSE_TO_LAND, None, None], DECELERATE),
+
+    # Slow down if close to land (more time to turn away)
+    Rule([None, None, CLOSE_TO_LAND, CLOSE_TO_LAND, None, None], DECELERATE),
+    Rule([CLOSE_TO_LAND, None, CLOSE_TO_LAND, None, None, None], DECELERATE),
+    Rule([None, CLOSE_TO_LAND, None, CLOSE_TO_LAND, None, None], DECELERATE),
+
+    # Slow down if going the wrong way
+    Rule([None, None, None, None, None, WRONG_DIRECTION], DECELERATE),
 ]
 
 
