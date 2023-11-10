@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import dataclasses
-
 from typing import List
 
 from LAB_1_2_3.domain.domain import DomainInterface

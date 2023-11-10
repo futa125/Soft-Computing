@@ -1,5 +1,3 @@
-import numba
-
 from LAB_1_2_3.domain.element import DomainElement
 from LAB_1_2_3.fuzzy_set.fuzzy_set import FuzzySetInterface
 from LAB_1_2_3.fuzzy_set.mutable import MutableFuzzySet

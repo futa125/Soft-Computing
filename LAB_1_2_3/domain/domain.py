@@ -3,8 +3,6 @@ from __future__ import annotations
 import abc
 import dataclasses
 import itertools
-import sys
-
 from abc import ABC
 from collections.abc import Iterable
 from typing import Iterator, Tuple, List, cast

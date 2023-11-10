@@ -1,5 +1,4 @@
 import dataclasses
-import sys
 
 from LAB_1_2_3.domain.domain import DomainInterface
 from LAB_1_2_3.domain.element import DomainElement
