@@ -19,6 +19,9 @@ class Parameters(NamedTuple):
     b3: float
     b4: float
 
+    def __str__(self):
+        return f"{self.b0:.10f}, {self.b1:.10f}, {self.b2:.10f}, {self.b3:.10f}, {self.b4:.10f}"
+
 
 @dataclass
 class Individual:
@@ -132,6 +135,7 @@ class GenerationalGeneticAlgorithm(GeneticAlgorithm):
 
     def run(self) -> Individual:
         old_population: List[Individual] = self.initial_population()
+        best_individual: Individual = self.best_individual(old_population)
 
         for i in range(0, self.generations):
             new_population: List[Individual] = []
@@ -146,8 +150,9 @@ class GenerationalGeneticAlgorithm(GeneticAlgorithm):
 
                 new_population.append(child)
 
-            if self.best_individual(new_population).loss < self.best_individual(old_population).loss:
-                print(f"Generation {i}, lowest loss: {self.best_individual(new_population).loss}")
+            if self.best_individual(new_population).loss < best_individual.loss:
+                best_individual = self.best_individual(new_population)
+                print(f"Generation: {i:10d}\tParameters: {best_individual.params}\tLoss: {best_individual.loss}")
 
             old_population = new_population
 
@@ -177,7 +182,7 @@ class SteadyStateGeneticAlgorithm(GeneticAlgorithm):
 
             if self.best_individual(population).loss < best_individual.loss:
                 best_individual = self.best_individual(population)
-                print(f"Generation {i}, lowest loss: {self.best_individual(population).loss}")
+                print(f"Generation: {i:10d}\tParameters: {best_individual.params}\tLoss: {best_individual.loss}")
 
         return self.best_individual(population)
 
@@ -186,8 +191,11 @@ def main() -> None:
     generational_alg = GenerationalGeneticAlgorithm()
     steady_state_alg = SteadyStateGeneticAlgorithm()
 
-    print(generational_alg.run())
-    print(steady_state_alg.run())
+    generational_alg.run()
+    print()
+
+    steady_state_alg.run()
+    print()
 
 
 if __name__ == "__main__":
