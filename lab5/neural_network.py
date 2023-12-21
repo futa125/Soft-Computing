@@ -4,7 +4,7 @@ import numpy as np
 
 
 class NeuralNetwork:
-    def __init__(self, layers=(100, 64, 32, 16, 5), learning_rate=0.1):
+    def __init__(self, layers=(100, 50, 25, 10, 5), learning_rate=0.1):
         self.layers: Tuple[int] = layers
         self.layer_count: int = len(layers)
 
