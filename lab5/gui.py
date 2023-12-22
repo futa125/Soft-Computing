@@ -138,6 +138,9 @@ class PredictionWindow:
 
 
 def transform_points(points: np.ndarray, representative_points_count: int) -> np.ndarray:
+    if len(points) == 0:
+        return np.empty((representative_points_count, 2))
+
     x, y = points[:, 0], points[:, 1]
 
     x = x - np.mean(x)
