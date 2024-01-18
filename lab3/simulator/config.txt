@@ -1,4 +1,4 @@
 python lab_3_simulator.py
-1
+3
 20
 10

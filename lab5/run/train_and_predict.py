@@ -7,11 +7,11 @@ from lab5.neural_network import NeuralNetwork, LearningAlgorithm
 
 
 def train_and_predict() -> None:
-    dataset_alpha = np.loadtxt("./dataset/α.txt").T
-    dataset_beta = np.loadtxt("./dataset/β.txt").T
-    dataset_gamma = np.loadtxt("./dataset/γ.txt").T
-    dataset_delta = np.loadtxt("./dataset/δ.txt").T
-    dataset_epsilon = np.loadtxt("./dataset/ε.txt").T
+    dataset_alpha = np.loadtxt("./run/dataset/α.txt").T
+    dataset_beta = np.loadtxt("./run/dataset/β.txt").T
+    dataset_gamma = np.loadtxt("./run/dataset/γ.txt").T
+    dataset_delta = np.loadtxt("./run/dataset/δ.txt").T
+    dataset_epsilon = np.loadtxt("./run/dataset/ε.txt").T
 
     combined_dataset = np.append(dataset_alpha, dataset_beta, axis=1)
     combined_dataset = np.append(combined_dataset, dataset_gamma, axis=1)

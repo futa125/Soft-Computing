@@ -14,7 +14,7 @@ class DatasetWindow:
             symbol: Symbol,
             count: int = 20,
             representative_point_count: int = 50,
-            dataset_folder: str = "dataset",
+            dataset_folder: str = "run/dataset",
     ):
         self.master: tk.Tk = master
         self.master.title("Paint")

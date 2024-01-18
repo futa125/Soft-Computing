@@ -15,7 +15,6 @@ def zadeh_or() -> FloatBinaryFunction:
     return lambda x, y: max(x, y)
 
 
-@numba.njit
 def hamacher_t_norm(value: float) -> FloatBinaryFunction:
     return lambda x, y: (x * y) / (value + (1 - value) * (x + y - x * y))
 

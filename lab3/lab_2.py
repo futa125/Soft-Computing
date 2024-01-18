@@ -123,7 +123,7 @@ def main() -> None:
                             .set(DomainElement.of(3, 4), 0.2)
                             .set(DomainElement.of(4, 3), 0.2))
 
-    r2: FuzzySetInterface = (r)
+    r2: FuzzySetInterface = r
 
     print()
     print(f"R is a fuzzy equivalence before compositions? {is_fuzzy_equivalence(r2)}")
